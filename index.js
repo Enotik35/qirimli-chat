@@ -14,20 +14,6 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(body.json());
 app.use(cookie());
 
-const http = require('http');
-const fs = require('fs');
-
-const server = http.createServer(function (request,response) {
-console.log(request.method, request.url);
-if (request.url === '/style.css') {
-const css = fs.readFileSync('style.css','utf8');
-response.end(css);
-} else {
-const text = fs.readFileSync('index.html','utf8');
-response.end(text);
-}
-});
-
 const users = {
 	'a.ostapenko@corp.mail.ru': {
 		email: 'a.ostapenko@corp.mail.ru',
